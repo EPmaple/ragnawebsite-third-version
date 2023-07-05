@@ -1,0 +1,75 @@
+.table th {
+  background-color: rgba(52, 55, 65, 0.4);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+/*********/
+
+.table_header img {
+  display: block;
+  margin: 0 auto;
+}
+.table_header span {
+  display: block;
+  text-align: center;
+}
+/*********/
+.th_text {
+  color: #FFFFFF;
+}
+
+.ranking_img,
+.name_img, 
+.slime_img {
+  width: 1.857rem;
+  height: auto;
+}
+
+.zoom_img {
+  width: 1.5625rem;
+  height: auto;
+  background: transparent;
+}
+
+.table_header {
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0ab2e;
+}
+
+/*
+.js_table_header {
+  cursor: pointer;
+  transition: transform 500ms;
+}
+.js_table_header:hover {
+  transform: translateY(-0.75rem);
+  text-decoration: underline;
+  text-decoration-color: #f0ab2e;
+  transition: text-decoration-color 0.3s ease-in-out; /* Add transition for smooth effect 
+}
+*/
+.table_header_container {
+  cursor: pointer;
+  transition: transform 500ms;
+}
+.table_header_container:hover {
+  transform: translateY(-0.5rem);
+  text-decoration: underline;
+  text-decoration-color: #f0ab2e;
+}
+
+.caret-up::after {
+  content: "\25B2"; /* Up caret Unicode character */
+  font-size: 1rem;
+}
+
+.caret-down::after {
+  content: "\25BC"; /* Down caret Unicode character */
+  font-size: 1rem;
+}
+
+.no-caret {
+  display: none; /* Hide the caret */
+}
+

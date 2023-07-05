@@ -1,0 +1,133 @@
+<!-- season.html -->
+{% extends 'index.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/datable.css">
+<link rel="stylesheet" href="../static/scrollbar.css">
+<link rel="stylesheet" href="../static/toprank.css">
+<link rel="stylesheet" href="../static/home.css">
+<link rel="stylesheet" href="../static/table_header.css">
+<link rel="stylesheet" href="../static/general.css">
+{% endblock %}
+
+{% block title %}
+  Season {{ season_number }}
+{% endblock %}
+
+{% block layout %}
+<div class="ragna_seasons_layout">
+  {% block bar %}
+  <div class="scrollbar">
+    {% for season_number in [index, 36, 35, 34.5, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25.5, 25, 24, 23, 22, 21, 20, 19, 18]%}
+      {% if season_number == index %}
+        <a class="btn btn-primary" href="../index.html">Home</a>
+      {% else %}
+        <a class="btn btn-primary" href="s{{ season_number }}.html">Ragna S{{ season_number }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endblock %}
+
+  {% block content %}
+    <div class="top_rank_grid">
+      <p class="top_msg">Slime Results for Ragna Season {{ season_number }}</p>
+
+      <div class="misc_stats">
+        <div class="sum">
+          <p class="misc_stats_text">
+            total slimes: {{ sum_of_slimes }}
+          </p>
+          <p class="misc_stats_text">
+            total zooms: {{ sum_of_zooms }}
+          </p>
+        </div> <!-- end of div for sum-->
+
+        <div class="average">
+          <p class="misc_stats_text">
+            average slimes: {{ average_of_slimes }}
+          </p>
+          <p class="misc_stats_text">
+            average zooms: {{ average_of_zooms }}
+          </p>
+        </div> <!--end of div for average-->
+      </div> <!--end of div for misc_stats-->
+
+      <div class="top_rank_info">
+        <div class="second">
+          <div class="tooltip"></div>
+          <div class="member_name">
+            {{ top_members[1].name }}
+          </div>
+          <div class="member_slime">
+            <u>{{ top_members[1].slimes }}</u> slimes
+          </div>
+        </div> <!--end of div for second-->
+
+        <div class="first">
+          <div class="tooltip"></div>
+          <div class="member_name">
+            {{ top_members[0].name }}
+          </div>
+          <div class="member_slime">
+            <u>{{ top_members[0].slimes }}</u> slimes
+          </div>
+        </div> <!--end of div for first-->
+
+        <div class="third">
+          <div class="tooltip"></div>
+          <div class="member_name">
+            {{ top_members[2].name }}
+          </div>
+          <div class="member_slime">
+            <u>{{ top_members[2].slimes }}</u> slimes
+          </div>
+        </div> <!--end of div for class="third"-->
+
+      </div> <!--end of div for class="top_rank_info"-->
+    </div> <!--end of div for top_rank_grid-->
+
+      <table class="table table-hover table-dark">
+          <thead>
+              <tr class="th_row">
+                  <th scope="col" class="table_header">
+                      <img class="slime_img" src="../static/img/crystal.webp">
+                      <span>Ranking</span>
+                  </th>
+
+                  <th scope="col" class="table_header js_table_header" data-group="name">
+                    <div class="table_header_container">
+                      <img class="name_img" src="../static/img/vecteezy_pencil-icon-png-transparent_9663676_10.png">
+                      <span>Name</span>
+                    </div>
+                  </th>
+
+                  <th scope="col" class="table_header js_table_header" data-group="slimes">
+                    <div class="table_header_container">
+                      <img class="slime_img" src="../static/img/AuroraKing.webp">
+                      <span>Slimes</span>
+                    </div>
+                  </th>
+
+                  <th scope="col" class="table_header js_table_header" data-group="zooms">
+                    <div class="table_header_container">
+                      <img class="zoom_img" src="../static/img/r_running3.png">
+                      <span>Zooms</span>
+                  </div>
+                  </th>
+
+              </tr>
+          </thead>
+
+          <tbody class="js-table-grid">
+          </tbody>
+
+      </table>
+  {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script> window.seasonDataObject = {{ json_datastring }}</script>
+  <script> window.seasonNumber = {{ season_number }}</script>
+  <script src="../scripts/ranking-button.js"></script>
+{% endblock %}

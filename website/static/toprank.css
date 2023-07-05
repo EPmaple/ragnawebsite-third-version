@@ -1,0 +1,158 @@
+
+.top_rank_grid {
+  border: 2.1875rem solid;
+  border-image-source: url('./img/r_gold_pattern.png');
+  border-image-repeat: round;
+  border-image-slice: 241 237 216 266;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  /*min-width: 340px; min-height: 200px;
+  background-image: url('./img/AuroraKing.webp');
+  background-repeat: no-repeat;
+  background-size: 40%;*/
+  overflow:scroll;
+  grid-template-rows: 1fr;
+  
+}
+
+.top_rank_info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /*min-width: 600px;*/
+  width: 100%; height: 100%;
+  justify-items: center; /* Align items horizontally to the center */
+  align-items: center; /* Align items vertically to the center */
+}
+
+.top_msg {
+  white-space: normal;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.misc_stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /*min-width: 600px;*/
+  justify-items: center; /* Align items horizontally to the center */
+  align-items: center; /* Align items vertically to the center */
+  overflow: scroll;
+}
+.misc_stats_text {
+  background-color: rgba(0, 0, 0, 0.5);;
+}
+.sum {
+  justify-content: right;
+  align-items: end;
+}
+
+.first,
+.second,
+.third {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.55);
+  width: 12.5rem; height: 12.5rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-position: center;
+  color: 	#a908a4;
+  font-size: 1.875rem;
+  position: relative;
+  max-width: 100%;
+  
+}
+
+.first, .second {
+  margin-right: 10px;
+}
+
+.first .tooltip,
+.second .tooltip,
+.third .tooltip {
+  height: 3.125rem; width: 3.125rem;
+  background-repeat: no-repeat;
+  background-size: 135%;
+  background-position: center;
+  position:absolute;
+  opacity: 1;
+  border-radius: 25px;
+  left: 0; top: 0;
+}
+
+.first .tooltip {
+  transform: rotate(-20deg);
+  background-image: url("https://media.istockphoto.com/id/920357378/vector/gold-crown-icon-1st-place.jpg?s=612x612&w=0&k=20&c=BVxWa8QFW1IdCE-ijEtIh9SH1Qa3r-Pbwwy6Y2_jLA0=");
+}
+
+.second .tooltip {
+  transform: rotate(-20deg);
+  background-image: url("https://media.istockphoto.com/id/920341946/vector/silver-crown-icon-2nd-place.jpg?s=170667a&w=0&k=20&c=RxUX230PpnTany8G6JsCks_vTAFGgJVTtqPim6LCiuw=");
+  background-size: 138%;
+}
+
+.third .tooltip {
+  transform: rotate(-20deg);
+  background-image: url("https://media.istockphoto.com/id/920392328/vector/bronze-crown-icon-3rd-place.jpg?s=612x612&w=0&k=20&c=as_FmqWYbZkguSQ4n9kEsFDGZ1yZrutf4TVlgaQlwEk=");
+  background-size: 138%;
+}
+
+.first::before,
+.second::before,
+.third::before {
+  content: "";
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.first::before {
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.6);
+  background-image: url('./img/chest.jpg');
+
+}
+
+.second::before {
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.6);
+  background-image: url('./img/box.jpg');
+}
+
+.third::before {
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.6);
+  background-image: url('./img/bag.jpg');
+  background-size: 105%;
+  background-position: center;
+}
+
+
+.member_name,
+.member_slime {
+  position: relative;
+  /*
+  background: linear-gradient(to right, #F7AE18, #662F8F);
+  */
+  background-color: rgba(0, 0, 0, 0.68);
+  background-clip: text;
+}
+/*
+.first .member_name {
+  background: linear-gradient(to top, rgba(240, 171, 46, 0.8), rgba(0, 0, 0, 0.5));
+}
+.first .member_slime {
+  background: linear-gradient(to bottom, rgba(240, 171, 46, 0.8), rgba(0, 0, 0, 0.5));
+}
+*/
+
+

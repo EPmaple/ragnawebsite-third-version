@@ -1,0 +1,78 @@
+
+body {
+  font-family: Oswald, sans-serif;
+  font-size: 18.5px;
+  font-weight: 500;
+  background-color: #212121;
+  color: #B59410;
+
+
+  /*min-width: 752px;*/
+}
+
+.ragna_seasons_layout {
+  /*
+  background-image: url("https://cdnimg.gamekee.com/images/dc/1590562863593_27774900.gif");
+  */
+  background-image: url('img/AuroraKing.webp'),
+  url('img/DC_classic_background.jpg');
+  background-repeat: no-repeat, repeat-y;
+  height: 100%; width: 100%;
+  background-size: contain;
+}
+
+.index_layout {
+  background-image: url('img/DC_classic_background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 100%; width: 100%;
+}
+
+@media (max-width: 700px) {
+  .first,
+  .second,
+  .third {
+    font-size: 1.5rem;
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .first,
+  .second,
+  .third {
+    font-size: 1.2rem;
+    width: 7rem;
+    height: 7rem;
+  }
+  .first .tooltip,
+  .second .tooltip,
+  .third .tooltip {
+    height: 2rem; width: 2rem;
+  }
+}
+
+@media (width < 426px) {
+  .first,
+  .second,
+  .third {
+    font-size: 0.9rem;
+    width: 6.2rem;
+    height: 6.2rem;
+  }
+  .first .tooltip,
+  .second .tooltip,
+  .third .tooltip {
+    height: 1.5rem; width: 1.5rem;
+  }
+  .top_rank_grid {
+    border: 1.55rem solid;
+    border-image-source: url('./img/r_gold_pattern.png');
+    border-image-repeat: round;
+    border-image-slice: 241 237 216 266;
+  }
+  p {
+    margin-bottom: 0.8rem;
+  }
+}

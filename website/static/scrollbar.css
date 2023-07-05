@@ -1,0 +1,16 @@
+.scrollbar {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.btn {
+  background-color: rgb(0, 0, 0);
+  border-color: rgba(240,171,46,.9);
+}
+
+.btn:hover,
+.btn:active,
+.btn.clicked {
+  background-color: rgba(240,171,46,.8);
+  border-color: rgba(240,171,46,.9);
+}
