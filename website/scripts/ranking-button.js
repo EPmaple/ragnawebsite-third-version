@@ -1,9 +1,6 @@
-// to access the 'sort_order' value from the script tag
 const seasonNumber = window.seasonNumber;
-const seasonDataObject = window.seasonDataObject;
+const seasonDataObjects = window.jsonSeasonData;
 window.sortOrder = `sort_slimes=asc`;
-//console.log(JSON.stringify(seasonDataObject));
-//console.log(typeof JSON.stringify(seasonDataObject));
 
 /*****************************************************/
 /*****************************************************/
@@ -60,53 +57,51 @@ function tbodyHTML(sortedSeasonDataObject) {
 /*****************************************************/
 /*****************************************************/
 
-function toSortData(seasonDataObject, sortOrder) {
+function toSortData(seasonDataObjects, sortOrder) {
   let sortedSeasonDataObject;
 
   if (sortOrder.startsWith("sort_name")) {
     if (sortOrder.endsWith("asc")) {
-      sortedSeasonDataObject = Object.values(seasonDataObject).sort(function(a, b) {
+      sortedSeasonDataObject = Object.values(seasonDataObjects).sort(function(a, b) {
         return b.name.localeCompare(a.name);
       });
     } else {
-      sortedSeasonDataObject = Object.values(seasonDataObject).sort(function(a, b) {
+      sortedSeasonDataObject = Object.values(seasonDataObjects).sort(function(a, b) {
         return a.name.localeCompare(b.name);
       });
     }
   } else if (sortOrder.startsWith("sort_slimes")) {
     if (sortOrder.endsWith("asc")) {
-      sortedSeasonDataObject = Object.values(seasonDataObject).sort(function(a, b) {
+      sortedSeasonDataObject = Object.values(seasonDataObjects).sort(function(a, b) {
         return a.slimes - b.slimes;
       });
     } else {
-      sortedSeasonDataObject = Object.values(seasonDataObject).sort(function(a, b) {
+      sortedSeasonDataObject = Object.values(seasonDataObjects).sort(function(a, b) {
         return b.slimes - a.slimes;
       });
     }
   } else if (sortOrder.startsWith("sort_zooms")) {
     if (sortOrder.endsWith("asc")) {
-      sortedSeasonDataObject = Object.values(seasonDataObject).sort(function(a, b) {
+      sortedSeasonDataObject = Object.values(seasonDataObjects).sort(function(a, b) {
         return a.zooms - b.zooms;
       });
     } else {
-      sortedSeasonDataObject = Object.values(seasonDataObject).sort(function(a, b) {
+      sortedSeasonDataObject = Object.values(seasonDataObjects).sort(function(a, b) {
         return b.zooms - a.zooms;
       });
     }
   }
 
-  //console.log(`seasonDataObject: ${JSON.stringify(seasonDataObject)}`)
-  //console.log(`sortedSeasonDataObject: ${sortedSeasonDataObject}`);
   return sortedSeasonDataObject;
 };
 
-//console.log(typeof toSortData(seasonDataObject, "sort_name=asc")); // typeof object
-//console.log(toSortData(seasonDataObject, "sort_name=asc")); //z to a, works
-//console.log(toSortData(seasonDataObject, "sort_name=desc")); //#, a to z, works
-//console.log(toSortData(seasonDataObject, "sort_slimes=asc")); // up from 0,works
-//console.log(toSortData(seasonDataObject, "sort_slimes=desc")); // down to 0, works
-//console.log(toSortData(seasonDataObject, "sort_zooms=asc")); // up from 0, works
-//console.log(toSortData(seasonDataObject, "sort_zooms=desc")); // down to 0, works
+//console.log(typeof toSortData(seasonDataObjects, "sort_name=asc")); // typeof object
+//console.log(toSortData(seasonDataObjects, "sort_name=asc")); //z to a, works
+//console.log(toSortData(seasonDataObjects, "sort_name=desc")); //#, a to z, works
+//console.log(toSortData(seasonDataObjects, "sort_slimes=asc")); // up from 0,works
+//console.log(toSortData(seasonDataObjects, "sort_slimes=desc")); // down to 0, works
+//console.log(toSortData(seasonDataObjects, "sort_zooms=asc")); // up from 0, works
+//console.log(toSortData(seasonDataObjects, "sort_zooms=desc")); // down to 0, works
 
 
 function toSortDataWrapper(group) {
@@ -115,14 +110,14 @@ function toSortDataWrapper(group) {
 
   if (window.sortOrder.startsWith(`sort_${group}`)) {
     if (window.sortOrder.endsWith('asc')) {
-      sortedSeasonDataObject = toSortData(seasonDataObject, `sort_${group}=desc`);
+      sortedSeasonDataObject = toSortData(seasonDataObjects, `sort_${group}=desc`);
       window.sortOrder = `sort_${group}=desc`;
     } else if (window.sortOrder.endsWith('desc')) {
-      sortedSeasonDataObject = toSortData(seasonDataObject, `sort_${group}=asc`);
+      sortedSeasonDataObject = toSortData(seasonDataObjects, `sort_${group}=asc`);
       window.sortOrder = `sort_${group}=asc`;
     };
   } else { //does not start with sort_${group}, ex. not sort_name
-    sortedSeasonDataObject = toSortData(seasonDataObject, `sort_${group}=desc`);
+    sortedSeasonDataObject = toSortData(seasonDataObjects, `sort_${group}=desc`);
     window.sortOrder = `sort_${group}=desc`;
   };
 

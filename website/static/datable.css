@@ -4,7 +4,7 @@
   background-color: rgb(32, 34, 41);
   opacity: 0.95;
   */
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   text-align: center;
   table-layout: auto;
   
@@ -17,18 +17,19 @@
 }
 
 .first_rank_row{
-  background: linear-gradient(to top, rgba(240, 171, 46, 0.3), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to top, rgba(240, 171, 46, 0.36), rgba(0, 0, 0, 0.6));
   position: relative;
 }
 .second_rank_row{
-  background: linear-gradient(to top, rgba(90, 192, 236, 0.3), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to top, rgba(90, 192, 236, 0.36), rgba(0, 0, 0, 0.6));
   position: relative;
 }
 
 .third_rank_row{
-  background: linear-gradient(to top, rgba(240, 69, 46, 0.3), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to top, rgba(240, 69, 46, 0.36), rgba(0, 0, 0, 0.6));
   position: relative;
 }
+
 .first_rank_row::after,
 .second_rank_row::after,
 .third_rank_row::after {
@@ -38,7 +39,7 @@
   left: 0;
   border-right: 0 solid transparent;
   border-bottom: 0 solid transparent;
-  height: 40%;
+  height: 50%;
 }
 .first_rank_row::after {
   border-left: 0.2rem solid #f0ab2e;

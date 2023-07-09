@@ -23,7 +23,7 @@ body {
 
 .index_layout {
   background-image: url('img/DC_classic_background.jpg');
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: 100% auto;
   height: 100%; width: 100%;
 }
