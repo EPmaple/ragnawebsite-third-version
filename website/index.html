@@ -11,9 +11,9 @@
       <link rel="stylesheet" href="./static/datable.css">
       <link rel="stylesheet" href="./static/scrollbar.css">
       <link rel="stylesheet" href="./static/toprank.css">
-      <link rel="stylesheet" href="./static/index.css">
       <link rel="stylesheet" href="./static/table_header.css">
       <link rel="stylesheet" href="./static/general.css">
+      <link rel="stylesheet" href="./static/index.css">
       
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,14 +133,29 @@
       <p class="home_msg">
         click on any of the buttons above to navigate to the data page for the corresponding ragna season
       </p>
-      <canvas id="totalChart" class="chart"></canvas>
-      <p class="home_msg">Above chart: total slimes, total members, total zooms</p>
-      <canvas id="perMemberChart" class="chart"></canvas>
-      <p class="home_msg" class="chart">Above chart: slimes per member, zooms per member</p>
-      <canvas id="slimeStandardDeviationChart" class="chart"></canvas>
-      <p class="home_msg">Above chart: slime standard deviations</p>
-      <canvas id="zoomStandardDeviationChart" class="chart"></canvas>
-      <p class="home_msg">Above chart: zoom standard deviations</p>
+      <div class="facts_container">
+        The person with the most first place: traffyboi, with 10
+      </div>
+      <div class="facts_container">
+        The person with the most first place in a row: traffyboi, with 8
+      </div>
+      <div >
+        <canvas id="totalChart" class="chart"></canvas>
+        <p class="home_msg">Above chart: total slimes, total members, total zooms</p>
+      </div>
+      <div >
+        <canvas id="perMemberChart" class="chart"></canvas>
+        <p class="home_msg" class="chart">Above chart: slimes per member, zooms per member</p>
+      </div>
+      <div >
+        <canvas id="slimeStandardDeviationChart" class="chart"></canvas>
+        <p class="home_msg">Above chart: slime standard deviations</p>
+      </div>
+      <div >
+        <canvas id="zoomStandardDeviationChart" class="chart"></canvas>
+        <p class="home_msg">Above chart: zoom standard deviations</p>
+      </div>
+
       
     </div>
 

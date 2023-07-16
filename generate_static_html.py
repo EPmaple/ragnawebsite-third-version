@@ -22,12 +22,15 @@ season_numbers = ['18', '19', '20', '21', '22', '23', '24',
                   '37']  
 
 subfolder_name = f'ragna_season'
+seasonal_tops = {}
+
 for season_number in season_numbers:
   #season_data is a list of items, do item.slimes, item.zoom, etc.
   #to access the elements within the items
   season_data = helpers.get_season_data(season_number)
   #print(f'season number is {season_number} and the following are data: {season_data}\n') 
   helpers.ranking_slimes(season_data) #adds ranking element to each item in season_data based on slime count
+  # ex. {'id': 64, 'name': 'variant-iv', 'slimes': 31, 'zooms': 0, 'ranking_slimes': 7}
   
   file_prefix = f's{season_number}' #ex. s18
   # Load the season template
@@ -52,7 +55,6 @@ for season_number in season_numbers:
     average_of_zooms = average_of_zooms,
     top_members = top_members,
     json_datastring = json_datastring,
-
     season_number=season_number, season_data=season_data)
   
   filename = file_prefix + '.html' #ex. s18.html
@@ -66,7 +68,19 @@ for season_number in season_numbers:
     file.write(rendered_html)
     #print(f"... wrote {filename}"")
 
+  # at the end of the for loop for one season
+  seasonal_top = helpers.ranking(season_data) # seasonal_top is a list
+  seasonal_tops[season_number] = seasonal_top
+  # seasonal_tops example output: {'18': ['Link2D3atH'], '19': ['zero'], '20': ['Vent'], '21': ['zero'], '22': ['zero'], '23': ['TraffyBoi'], '24': ['TraffyBoi'], '25': ['TraffyBoi'], '25.5': ['TraffyBoi'], '26': ['TraffyBoi'], '27': ['TraffyBoi'], '28': ['TraffyBoi'], '29': ['TraffyBoi'], '30': ['Kenshin'], '31': ['traffyboi'], '32': ['Thaelon'], '33': ['Thaelon'], '34': ['Thaelon'], '34.5': ['zero'], '35': ['Thaelon', 'traffyboi'], '36': ['Thaelon'], '37': ['Thaelon']}
 
+most_common_names, max_frequency = helpers.most_common_name(seasonal_tops)
+# convert the list to a string with comma as the delimiter
+most_common_names = ', '.join(most_common_names)
+  
+# print(most_common_names, max_frequency) # ['traffyboi'] 10
+most_streak_names, max_streak = helpers.most_streak_names(seasonal_tops)
+most_streak_names = ', '.join(most_streak_names)
+# print(most_streak_names, max_streak) # ['traffyboi'] 8
 ######################################################
 ######################################################
 
@@ -89,7 +103,11 @@ for season_number in season_numbers:
 
 # Render the home template (if it requires data, pass it as arguments to template.render())
 rendered_html = template.render(
-  index_data = index_data
+  index_data = index_data,
+  most_common_names = most_common_names,
+  max_frequency = max_frequency,
+  most_streak_names = most_streak_names,
+  max_streak = max_streak
 )
 
 # Generate a static HTML file for the home page

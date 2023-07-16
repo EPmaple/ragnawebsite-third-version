@@ -1,3 +1,14 @@
+.index_layout {
+  background-image: url('img/DC_classic_background.jpg');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  height: 100%; width: 100%;
+}
+
 .home_msg {
-  margin-left: 0.5rem;
+  border-bottom: 0.1rem solid white;
 };
+
+.facts_container {
+  border: 0.1rem solid white;
+}

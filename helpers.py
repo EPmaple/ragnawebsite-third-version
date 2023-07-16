@@ -92,11 +92,62 @@ def to_sort_data(season_data, sort_order):
 ######################################################
 ######################################################
 
-sort_orders = [
-    'sort_name=asc',
-    'sort_name=desc',
-    'sort_slimes=asc',
-    'sort_slimes=desc',
-    'sort_zooms=asc',
-    'sort_zooms=desc'
-]
+# when returned, return a list, then do a key:value, season_number: list
+def ranking(season_data):
+  seasonal_top = []
+  for member in season_data:
+    if member['ranking_slimes'] == 1:
+      seasonal_top.append(member['name'])
+
+  return seasonal_top
+
+######################################################
+######################################################
+
+def most_common_name(dict):
+  frequency = {}
+  max_frequency = 0
+  most_common_names = []
+
+  # data.values() returns a view object representing the values of the data dictionary. The for loop iterates over the view object, and each value is printed.
+  # each value is a list
+  for names in dict.values(): 
+    # to iterate over the name/s in the list
+    for name in names:
+      name = name.lower()
+      # dictionary.get(key, default); name is the key to look up in the dict, and 0 is the default value to be returned if the key is not found within the dictionary
+      frequency[name] = frequency.get(name, 0) + 1
+      if frequency[name] > max_frequency:
+        max_frequency = frequency[name]
+
+  for name, freq in frequency.items():
+    if freq == max_frequency:
+      most_common_names.append(name)
+  
+  return most_common_names, max_frequency
+
+######################################################
+######################################################
+
+def most_streak_names(dict):
+  max_streak = 0
+  current_streak = 0
+  current_streak_name = None
+  most_streak_names = []
+
+  for names in dict.values():
+    for name in names:
+      name = name.lower()
+      if name == current_streak_name:
+        current_streak += 1
+      else: # name != current_streak_name
+        current_streak = 1
+        current_streak_name = name
+
+      if current_streak > max_streak:
+        max_streak = current_streak
+        most_streak_names = [current_streak_name]
+      elif current_streak == max_streak:
+        most_streak_names.append(current_streak_name)
+
+  return most_streak_names, max_streak

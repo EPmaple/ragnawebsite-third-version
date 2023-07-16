@@ -5,27 +5,14 @@ body {
   font-weight: 500;
   background-color: #212121;
   color: #B59410;
-
-
-  /*min-width: 752px;*/
 }
 
 .ragna_seasons_layout {
-  /*
-  background-image: url("https://cdnimg.gamekee.com/images/dc/1590562863593_27774900.gif");
-  */
   background-image: url('img/AuroraKing.webp'),
   url('img/DC_classic_background.jpg');
   background-repeat: no-repeat, repeat-y;
   height: 100%; width: 100%;
   background-size: contain;
-}
-
-.index_layout {
-  background-image: url('img/DC_classic_background.jpg');
-  background-repeat: repeat-y;
-  background-size: 100% auto;
-  height: 100%; width: 100%;
 }
 
 @media (max-width: 700px) {
