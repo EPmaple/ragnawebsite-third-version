@@ -18,7 +18,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-QvsmmftY2T3iHtAPnB0Sbgj+XElVXjLVb37X2SBpwsuAEmYHzZfEbl9lN1opEanIq0NMeULdP8hz0DHe7Xa/Pw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!--       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-QvsmmftY2T3iHtAPnB0Sbgj+XElVXjLVb37X2SBpwsuAEmYHzZfEbl9lN1opEanIq0NMeULdP8hz0DHe7Xa/Pw==" crossorigin="anonymous" referrerpolicy="no-referrer"  -->
 
 
       <title>
@@ -47,12 +47,25 @@
       <p class="home_msg">
         click on any of the buttons above to navigate to the data page for the corresponding ragna season
       </p>
-      <div class="facts_container">
-        The person with the most first place: {{ most_common_names }}, with {{ max_frequency }}
+
+      <div style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-left: 0.1rem;
+        justify-items: center;
+        align-items: center; 
+      ">
+        <div class="facts_container">
+          Most 1st place:  
+          <p>{{ most_common_names }}, with {{ max_frequency }}</p>
+        </div>
+        <div class="facts_container" id="f_container">
+          Most consecutive 1st place: 
+          <p>{{ most_streak_names }}, with {{ max_streak }}</p>
+        </div>
       </div>
-      <div class="facts_container">
-        The person with the most first place in a row: {{ most_streak_names }}, with {{ max_streak }}
-      </div>
+
+
       <div >
         <canvas id="totalChart" class="chart"></canvas>
         <p class="home_msg">Above chart: total slimes, total members, total zooms</p>
@@ -78,13 +91,17 @@
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+      
+      <!--       
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+      -->
+
 
       {% block scripts %}
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <script> seasonDataObjects = {{ index_data }}</script>
       <script src="scripts/home-chart.js"></script>
       {% endblock %}

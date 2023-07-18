@@ -3,12 +3,12 @@
   background-repeat: repeat-y;
   background-size: 100% auto;
   height: 100%; width: 100%;
-}
-
-.home_msg {
-  border-bottom: 0.1rem solid white;
 };
 
 .facts_container {
-  border: 0.1rem solid white;
+  border-image-source: url('img/r_gold_pattern.png');
+  border-image-repeat: round;
+  border-image-slice: 241 237 216 266;
+  border: 1rem solid;
+
 }
