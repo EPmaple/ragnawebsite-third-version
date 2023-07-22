@@ -39,6 +39,10 @@
           
         
           
+            <a class="btn btn-primary" href="ragna_season/s38.html">Ragna S38</a>
+          
+        
+          
             <a class="btn btn-primary" href="ragna_season/s37.html">Ragna S37</a>
           
         
@@ -134,13 +138,7 @@
         click on any of the buttons above to navigate to the data page for the corresponding ragna season
       </p>
 
-      <div style="
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-left: 0.1rem;
-        justify-items: center;
-        align-items: center; 
-      ">
+      <div class="facts_grid">
         <div class="facts_container">
           Most 1st place:  
           <p>traffyboi, with 10</p>
@@ -152,19 +150,19 @@
       </div>
 
 
-      <div >
+      <div class="chart_container">
         <canvas id="totalChart" class="chart"></canvas>
         <p class="home_msg">Above chart: total slimes, total members, total zooms</p>
       </div>
-      <div >
+      <div class="chart_container">
         <canvas id="perMemberChart" class="chart"></canvas>
         <p class="home_msg" class="chart">Above chart: slimes per member, zooms per member</p>
       </div>
-      <div >
+      <div class="chart_container">
         <canvas id="slimeStandardDeviationChart" class="chart"></canvas>
         <p class="home_msg">Above chart: slime standard deviations</p>
       </div>
-      <div >
+      <div class="chart_container">
         <canvas id="zoomStandardDeviationChart" class="chart"></canvas>
         <p class="home_msg">Above chart: zoom standard deviations</p>
       </div>
@@ -187,8 +185,8 @@
 
 
       
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script> seasonDataObjects = [{'season_number': '18', 'members': 55, 'slimes': 433, 'zooms': 0}, {'season_number': '19', 'members': 56, 'slimes': 457, 'zooms': 0}, {'season_number': '20', 'members': 60, 'slimes': 712, 'zooms': 0}, {'season_number': '21', 'members': 56, 'slimes': 464, 'zooms': 0}, {'season_number': '22', 'members': 56, 'slimes': 449, 'zooms': 0}, {'season_number': '23', 'members': 56, 'slimes': 581, 'zooms': 0}, {'season_number': '24', 'members': 60, 'slimes': 648, 'zooms': 0}, {'season_number': '25', 'members': 57, 'slimes': 490, 'zooms': 0}, {'season_number': '25.5', 'members': 63, 'slimes': 621, 'zooms': 0}, {'season_number': '26', 'members': 63, 'slimes': 543, 'zooms': 0}, {'season_number': '27', 'members': 58, 'slimes': 678, 'zooms': 0}, {'season_number': '28', 'members': 55, 'slimes': 695, 'zooms': 0}, {'season_number': '29', 'members': 56, 'slimes': 733, 'zooms': 0}, {'season_number': '30', 'members': 69, 'slimes': 816, 'zooms': 0}, {'season_number': '31', 'members': 65, 'slimes': 815, 'zooms': 61}, {'season_number': '32', 'members': 65, 'slimes': 925, 'zooms': 62}, {'season_number': '33', 'members': 65, 'slimes': 877, 'zooms': 95}, {'season_number': '34', 'members': 65, 'slimes': 876, 'zooms': 67}, {'season_number': '34.5', 'members': 71, 'slimes': 1011, 'zooms': 84}, {'season_number': '35', 'members': 71, 'slimes': 834, 'zooms': 72}, {'season_number': '36', 'members': 72, 'slimes': 907, 'zooms': 67}, {'season_number': '37', 'members': 71, 'slimes': 918, 'zooms': 75}]</script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script> seasonDataObjects = [{'season_number': '18', 'members': 55, 'slimes': 433, 'zooms': 0}, {'season_number': '19', 'members': 56, 'slimes': 457, 'zooms': 0}, {'season_number': '20', 'members': 60, 'slimes': 712, 'zooms': 0}, {'season_number': '21', 'members': 56, 'slimes': 464, 'zooms': 0}, {'season_number': '22', 'members': 56, 'slimes': 449, 'zooms': 0}, {'season_number': '23', 'members': 56, 'slimes': 581, 'zooms': 0}, {'season_number': '24', 'members': 60, 'slimes': 648, 'zooms': 0}, {'season_number': '25', 'members': 57, 'slimes': 490, 'zooms': 0}, {'season_number': '25.5', 'members': 63, 'slimes': 621, 'zooms': 0}, {'season_number': '26', 'members': 63, 'slimes': 543, 'zooms': 0}, {'season_number': '27', 'members': 58, 'slimes': 678, 'zooms': 0}, {'season_number': '28', 'members': 55, 'slimes': 695, 'zooms': 0}, {'season_number': '29', 'members': 56, 'slimes': 733, 'zooms': 0}, {'season_number': '30', 'members': 69, 'slimes': 816, 'zooms': 0}, {'season_number': '31', 'members': 65, 'slimes': 815, 'zooms': 61}, {'season_number': '32', 'members': 65, 'slimes': 925, 'zooms': 62}, {'season_number': '33', 'members': 65, 'slimes': 877, 'zooms': 95}, {'season_number': '34', 'members': 65, 'slimes': 876, 'zooms': 67}, {'season_number': '34.5', 'members': 71, 'slimes': 1011, 'zooms': 84}, {'season_number': '35', 'members': 71, 'slimes': 834, 'zooms': 72}, {'season_number': '36', 'members': 72, 'slimes': 907, 'zooms': 67}, {'season_number': '37', 'members': 71, 'slimes': 918, 'zooms': 75}, {'season_number': '38', 'members': 72, 'slimes': 53, 'zooms': 3}]</script>
       <script src="scripts/home-chart.js"></script>
       
    </body>

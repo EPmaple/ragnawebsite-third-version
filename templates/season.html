@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../static/home.css">
 <link rel="stylesheet" href="../static/table_header.css">
 <link rel="stylesheet" href="../static/general.css">
+<link rel="stylesheet" href="../static/dailies.css">
 {% endblock %}
 
 {% block title %}
@@ -18,7 +19,7 @@
 <div class="ragna_seasons_layout">
   {% block bar %}
   <div class="scrollbar">
-    {% for season_number in [index, 37, 36, 35, 34.5, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25.5, 25, 24, 23, 22, 21, 20, 19, 18]%}
+    {% for season_number in [index, 38, 37, 36, 35, 34.5, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25.5, 25, 24, 23, 22, 21, 20, 19, 18]%}
       {% if season_number == index %}
         <a class="btn btn-primary" href="../index.html">Home</a>
       {% else %}
@@ -86,55 +87,64 @@
       </div> <!--end of div for class="top_rank_info"-->
     </div> <!--end of div for top_rank_grid-->
 
-      <table class="table table-hover table-dark">
-          <thead>
-              <tr class="th_row">
-                  <th scope="col" class="table_header">
-                      <img class="slime_img" src="../static/img/crystal.webp">
-                      <span>Ranking</span>
-                  </th>
+    <!--conditional rendering-->
+    <div class="dailies_chart_container">
+      <div>
+        <canvas id="js_dailies_chart" style="display: none;"></canvas>
+      </div>
+      <div>
+        <input type="range" id="js_dailies_slider" min="0" max="100" step="10" value="100" style="display: none;">
+      </div>
+    </div>
+    <!--end of conditional rendering-->
 
-                  <th scope="col" class="table_header js_table_header" data-group="name">
-                    <div class="table_header_container">
-                      <img class="name_img" src="../static/img/vecteezy_pencil-icon-png-transparent_9663676_10.png">
-                      <span>Name</span>
-                    </div>
-                  </th>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr class="th_row">
+                <th scope="col" class="table_header">
+                    <img class="slime_img" src="../static/img/crystal.webp">
+                    <span>Ranking</span>
+                </th>
 
-                  <th scope="col" class="table_header js_table_header" data-group="slimes">
-                    <div class="table_header_container">
-                      <img class="slime_img" src="../static/img/AuroraKing.webp">
-                      <span>Slimes</span>
-                    </div>
-                  </th>
-
-                  <th scope="col" class="table_header js_table_header" data-group="zooms">
-                    <div class="table_header_container">
-                      <img class="zoom_img" src="../static/img/r_running3.png">
-                      <span>Zooms</span>
-                  </div>
-                  </th>
-
-                  <!--                 
-                  <th scope="col" class="table_header js_table_header" data-group="">
+                <th scope="col" class="table_header js_table_header" data-group="name">
                   <div class="table_header_container">
-                    <span>Longest Time between Spawns</span>
+                    <img class="name_img" src="../static/img/vecteezy_pencil-icon-png-transparent_9663676_10.png">
+                    <span>Name</span>
                   </div>
-                  </th> -->
+                </th>
 
-              </tr>
-          </thead>
+                <th scope="col" class="table_header js_table_header" data-group="slimes">
+                  <div class="table_header_container">
+                    <img class="slime_img" src="../static/img/AuroraKing.webp">
+                    <span>Slimes</span>
+                  </div>
+                </th>
 
-          <tbody class="js-table-grid">
-          </tbody>
+                <th scope="col" class="table_header js_table_header" data-group="zooms">
+                  <div class="table_header_container">
+                    <img class="zoom_img" src="../static/img/r_running3.png">
+                    <span>Zooms</span>
+                </div>
+                </th>
 
-      </table>
+            </tr>
+        </thead>
+
+        <tbody class="js-table-grid">
+        </tbody>
+
+    </table>
   {% endblock %}
 </div>
 {% endblock %}
 
 {% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script> window.jsonSeasonData = {{ json_datastring }}</script>
   <script> window.seasonNumber = {{ season_number }}</script>
   <script src="../scripts/ranking-button.js"></script>
+  {% if season_number|int > 37 %}
+    <script> window.slime_records = {{ slime_records }}</script>
+    <script src="../scripts/daily-slimes.js"></script>
+  {% endif %}
 {% endblock %}

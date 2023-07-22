@@ -47,10 +47,6 @@ def ranking_slimes(season_data):
 
 ######################################################
 ######################################################
-"""
-def get_season_data(season_number):
-    return data.season_data.get(season_number, [])
-"""
 
 def get_season_data(season_number):
   module_name = f'ragna_data.s{season_number.replace(".", "_")}_data'
@@ -59,6 +55,20 @@ def get_season_data(season_number):
     season_data = module.season_data
     return season_data
   except ImportError:
+    return None
+  
+######################################################
+######################################################
+
+def get_slime_records(season_number):
+  module_name = f'ragna_data.s{season_number.replace(".", "_")}_data'
+  try:
+    module = importlib.import_module(module_name)
+    slime_records = module.slime_records
+    return slime_records
+  except ImportError:
+    return None
+  except AttributeError:
     return None
   
 ######################################################

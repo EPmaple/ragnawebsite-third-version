@@ -19,7 +19,7 @@ env = Environment(loader=FileSystemLoader("templates/"))
 season_numbers = ['18', '19', '20', '21', '22', '23', '24', 
                   '25', '25.5', '26', '27', '28', '29', '30',
                   '31', '32', '33', '34', '34.5', '35', '36',
-                  '37']  
+                  '37', '38']  
 
 subfolder_name = f'ragna_season'
 seasonal_tops = {}
@@ -46,6 +46,9 @@ for season_number in season_numbers:
     sum_of_zooms = 'not applicable'
     average_of_zooms = 'not applicable'
 
+  slime_records = helpers.get_slime_records(season_number) # Output: list of dictionaries or None
+  print(slime_records)
+
   # Render the template with the data
   rendered_html = template.render(
     title = f"ragna s{season_number}",
@@ -55,7 +58,9 @@ for season_number in season_numbers:
     average_of_zooms = average_of_zooms,
     top_members = top_members,
     json_datastring = json_datastring,
-    season_number=season_number, season_data=season_data)
+    season_number=season_number, 
+    slime_records = slime_records,
+    season_data=season_data)
   
   filename = file_prefix + '.html' #ex. s18.html
   file_path = os.path.join(output_folder, subfolder_name, filename)

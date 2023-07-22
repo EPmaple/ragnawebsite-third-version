@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="../static/home.css">
 <link rel="stylesheet" href="../static/table_header.css">
 <link rel="stylesheet" href="../static/general.css">
+<link rel="stylesheet" href="../static/dailies.css">
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +37,10 @@
     
       
         <a class="btn btn-primary" href="../index.html">Home</a>
+      
+    
+      
+        <a class="btn btn-primary" href="s38.html">Ragna S38</a>
       
     
       
@@ -187,49 +192,53 @@
       </div> <!--end of div for class="top_rank_info"-->
     </div> <!--end of div for top_rank_grid-->
 
-      <table class="table table-hover table-dark">
-          <thead>
-              <tr class="th_row">
-                  <th scope="col" class="table_header">
-                      <img class="slime_img" src="../static/img/crystal.webp">
-                      <span>Ranking</span>
-                  </th>
+    <!--conditional rendering-->
+    <div class="dailies_chart_container">
+      <div>
+        <canvas id="js_dailies_chart" style="display: none;"></canvas>
+      </div>
+      <div>
+        <input type="range" id="js_dailies_slider" min="0" max="100" step="10" value="100" style="display: none;">
+      </div>
+    </div>
+    <!--end of conditional rendering-->
 
-                  <th scope="col" class="table_header js_table_header" data-group="name">
-                    <div class="table_header_container">
-                      <img class="name_img" src="../static/img/vecteezy_pencil-icon-png-transparent_9663676_10.png">
-                      <span>Name</span>
-                    </div>
-                  </th>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr class="th_row">
+                <th scope="col" class="table_header">
+                    <img class="slime_img" src="../static/img/crystal.webp">
+                    <span>Ranking</span>
+                </th>
 
-                  <th scope="col" class="table_header js_table_header" data-group="slimes">
-                    <div class="table_header_container">
-                      <img class="slime_img" src="../static/img/AuroraKing.webp">
-                      <span>Slimes</span>
-                    </div>
-                  </th>
-
-                  <th scope="col" class="table_header js_table_header" data-group="zooms">
-                    <div class="table_header_container">
-                      <img class="zoom_img" src="../static/img/r_running3.png">
-                      <span>Zooms</span>
-                  </div>
-                  </th>
-
-                  <!--                 
-                  <th scope="col" class="table_header js_table_header" data-group="">
+                <th scope="col" class="table_header js_table_header" data-group="name">
                   <div class="table_header_container">
-                    <span>Longest Time between Spawns</span>
+                    <img class="name_img" src="../static/img/vecteezy_pencil-icon-png-transparent_9663676_10.png">
+                    <span>Name</span>
                   </div>
-                  </th> -->
+                </th>
 
-              </tr>
-          </thead>
+                <th scope="col" class="table_header js_table_header" data-group="slimes">
+                  <div class="table_header_container">
+                    <img class="slime_img" src="../static/img/AuroraKing.webp">
+                    <span>Slimes</span>
+                  </div>
+                </th>
 
-          <tbody class="js-table-grid">
-          </tbody>
+                <th scope="col" class="table_header js_table_header" data-group="zooms">
+                  <div class="table_header_container">
+                    <img class="zoom_img" src="../static/img/r_running3.png">
+                    <span>Zooms</span>
+                </div>
+                </th>
 
-      </table>
+            </tr>
+        </thead>
+
+        <tbody class="js-table-grid">
+        </tbody>
+
+    </table>
   
 </div>
 
@@ -247,9 +256,11 @@
 
 
       
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script> window.jsonSeasonData = [{"id": 1, "name": "17maple", "slimes": 2, "zooms": 0, "ranking_slimes": 24}, {"id": 2, "name": "AGE_Atomsk", "slimes": 0, "zooms": 0, "ranking_slimes": 26}, {"id": 3, "name": "AGE_Cats", "slimes": 6, "zooms": 0, "ranking_slimes": 20}, {"id": 4, "name": "AGE_Leofar", "slimes": 3, "zooms": 0, "ranking_slimes": 23}, {"id": 5, "name": "AGE_Lux", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 6, "name": "AGE_Vent", "slimes": 55, "zooms": 0, "ranking_slimes": 3}, {"id": 7, "name": "Aile", "slimes": 24, "zooms": 0, "ranking_slimes": 8}, {"id": 8, "name": "Ainthe", "slimes": 7, "zooms": 0, "ranking_slimes": 19}, {"id": 9, "name": "Angel", "slimes": 6, "zooms": 0, "ranking_slimes": 20}, {"id": 10, "name": "Apeks", "slimes": 2, "zooms": 0, "ranking_slimes": 24}, {"id": 11, "name": "Aquarios", "slimes": 0, "zooms": 0, "ranking_slimes": 26}, {"id": 12, "name": "CloudExt", "slimes": 3, "zooms": 0, "ranking_slimes": 23}, {"id": 13, "name": "Collin", "slimes": 2, "zooms": 0, "ranking_slimes": 24}, {"id": 14, "name": "Consutron", "slimes": 4, "zooms": 0, "ranking_slimes": 22}, {"id": 15, "name": "Dan", "slimes": 14, "zooms": 0, "ranking_slimes": 14}, {"id": 16, "name": "DoujinKAMI", "slimes": 45, "zooms": 0, "ranking_slimes": 4}, {"id": 17, "name": "Evian", "slimes": 6, "zooms": 0, "ranking_slimes": 20}, {"id": 18, "name": "GoldHunter", "slimes": 13, "zooms": 0, "ranking_slimes": 15}, {"id": 19, "name": "Gunther", "slimes": 5, "zooms": 0, "ranking_slimes": 21}, {"id": 20, "name": "Ioni", "slimes": 18, "zooms": 0, "ranking_slimes": 10}, {"id": 21, "name": "JAV_Dostic", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 22, "name": "JAV_Moss", "slimes": 2, "zooms": 0, "ranking_slimes": 24}, {"id": 23, "name": "JAV_booyah", "slimes": 9, "zooms": 0, "ranking_slimes": 17}, {"id": 24, "name": "Kenshin", "slimes": 57, "zooms": 0, "ranking_slimes": 2}, {"id": 25, "name": "Link2D3atH", "slimes": 15, "zooms": 0, "ranking_slimes": 13}, {"id": 26, "name": "Mantis9", "slimes": 6, "zooms": 0, "ranking_slimes": 20}, {"id": 27, "name": "Mixer", "slimes": 10, "zooms": 0, "ranking_slimes": 16}, {"id": 28, "name": "Odyn", "slimes": 4, "zooms": 0, "ranking_slimes": 22}, {"id": 29, "name": "Ophianne", "slimes": 5, "zooms": 0, "ranking_slimes": 21}, {"id": 30, "name": "Paw", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 31, "name": "Pengest", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 32, "name": "PlainDoe", "slimes": 17, "zooms": 0, "ranking_slimes": 11}, {"id": 33, "name": "ReddlsRow", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 34, "name": "RenTrout", "slimes": 4, "zooms": 0, "ranking_slimes": 22}, {"id": 35, "name": "SenorTonto", "slimes": 1, "zooms": 0, "ranking_slimes": 25}, {"id": 36, "name": "Spikeman", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 37, "name": "Sun-scream", "slimes": 4, "zooms": 0, "ranking_slimes": 22}, {"id": 38, "name": "Tachii", "slimes": 24, "zooms": 0, "ranking_slimes": 8}, {"id": 39, "name": "Tatumi", "slimes": 37, "zooms": 0, "ranking_slimes": 6}, {"id": 40, "name": "Tedo", "slimes": 1, "zooms": 0, "ranking_slimes": 25}, {"id": 41, "name": "Thaelon", "slimes": 26, "zooms": 0, "ranking_slimes": 7}, {"id": 42, "name": "TraffyBoi", "slimes": 68, "zooms": 0, "ranking_slimes": 1}, {"id": 43, "name": "Tympest", "slimes": 8, "zooms": 0, "ranking_slimes": 18}, {"id": 44, "name": "ULTRA_Foxs", "slimes": 3, "zooms": 0, "ranking_slimes": 23}, {"id": 45, "name": "Zerefsis", "slimes": 5, "zooms": 0, "ranking_slimes": 21}, {"id": 46, "name": "donuts", "slimes": 38, "zooms": 0, "ranking_slimes": 5}, {"id": 47, "name": "esyw", "slimes": 9, "zooms": 0, "ranking_slimes": 17}, {"id": 48, "name": "fiE", "slimes": 4, "zooms": 0, "ranking_slimes": 22}, {"id": 49, "name": "leafa", "slimes": 5, "zooms": 0, "ranking_slimes": 21}, {"id": 50, "name": "mUmU", "slimes": 3, "zooms": 0, "ranking_slimes": 23}, {"id": 51, "name": "neostep", "slimes": 0, "zooms": 0, "ranking_slimes": 26}, {"id": 52, "name": "rocketeer", "slimes": 22, "zooms": 0, "ranking_slimes": 9}, {"id": 53, "name": "variant-2", "slimes": 16, "zooms": 0, "ranking_slimes": 12}, {"id": 54, "name": "zero", "slimes": 45, "zooms": 0, "ranking_slimes": 4}, {"id": 55, "name": "Gonb", "slimes": 4, "zooms": 0, "ranking_slimes": 22}, {"id": 56, "name": "Bulbasaur", "slimes": 18, "zooms": 0, "ranking_slimes": 10}]</script>
   <script> window.seasonNumber = 29</script>
   <script src="../scripts/ranking-button.js"></script>
+  
 
    </body>
 
