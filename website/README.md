@@ -1,5 +1,7 @@
 # EPmaple.github.io
 
+website: https://epmaple.github.io/
+
 This website, created for Destiny Child's gamers group named AGE, is to display data of past Ragna Seasons, which includes member counts, 
 slime counts, and zoom counts.
 
