@@ -193,12 +193,26 @@
     </div> <!--end of div for top_rank_grid-->
 
     <!--conditional rendering-->
-    <div class="dailies_chart_container">
-      <div>
-        <canvas id="js_dailies_chart" style="display: none;"></canvas>
+    <div class="chart_container js_chart_container" id="js_chart_container" style="display: none;">
+      <div class="daili_chart_container">
+        <canvas id="js_dailies_chart"></canvas>
+      </div> 
+      <div class="slider_container">
+        <input type="range" id="js_dailies_slider" min="0" max="placeHolder"step="1" value="placeholder">
       </div>
+
+    </div> <!--end of div of chart_container-->
+
+
+    <div class="chart_container js_chart_container" id="js_chart_container" style="display: none;">
+      <div class="hourly_chart_container">
+        <canvas id="js_hourly_chart"></canvas>
+      </div>
+    </div> <!--end of div of chart_container-->
+
+    <div class="chart_container js_chart_container" id="js_chart_container" style="display: none;">
       <div>
-        <input type="range" id="js_dailies_slider" min="0" max="100" step="10" value="100" style="display: none;">
+        <canvas id="js_day_chart"></canvas>
       </div>
     </div>
     <!--end of conditional rendering-->
@@ -229,6 +243,12 @@
                   <div class="table_header_container">
                     <img class="zoom_img" src="../static/img/r_running3.png">
                     <span>Zooms</span>
+                </div>
+                </th>
+
+                <th scope="col" class="table_header js_table_header" data-group="time_between_slimes">
+                  <div class="table_header_container">
+                    <span>Time between Slimes</span>
                 </div>
                 </th>
 

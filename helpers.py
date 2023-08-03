@@ -1,6 +1,7 @@
 import statistics
 from heapq import nlargest
 import importlib
+from datetime import datetime, timedelta
 
 ######################################################
 ######################################################
@@ -60,6 +61,20 @@ def get_season_data(season_number):
 ######################################################
 ######################################################
 
+def get_slime_lists(season_number):
+  module_name = f'ragna_data.s{season_number.replace(".", "_")}_data'
+  try:
+    module = importlib.import_module(module_name)
+    season_data = module.slime_lists
+    return season_data
+  except ImportError:
+    return None
+  except AttributeError:
+    return None
+  
+######################################################
+######################################################
+
 def get_slime_records(season_number):
   module_name = f'ragna_data.s{season_number.replace(".", "_")}_data'
   try:
@@ -103,13 +118,16 @@ def to_sort_data(season_data, sort_order):
 ######################################################
 
 # when returned, return a list, then do a key:value, season_number: list
+# of those that are first place of each ragna season
 def ranking(season_data):
   seasonal_top = []
+  seasonal_top_withSlimes = []
   for member in season_data:
     if member['ranking_slimes'] == 1:
       seasonal_top.append(member['name'])
+      seasonal_top_withSlimes.append((member['name'], member['slimes']))
 
-  return seasonal_top
+  return seasonal_top, seasonal_top_withSlimes
 
 ######################################################
 ######################################################
@@ -161,3 +179,70 @@ def most_streak_names(dict):
         most_streak_names.append(current_streak_name)
 
   return most_streak_names, max_streak
+
+######################################################
+######################################################
+
+# ex. input: '2023-07-20 14:29:46.408000'
+def calculate_time_diff(timestamp_str1, timestamp_str2):
+  # convert timestamp strings into python datetime objects by using the string_parse_time function()
+  timestamp1 = datetime.strptime(timestamp_str1, '%Y-%m-%d %H:%M:%S.%f')
+  timestamp2 = datetime.strptime(timestamp_str2, '%Y-%m-%d %H:%M:%S.%f')
+
+  time_diff = timestamp2 - timestamp1
+
+  return time_diff
+
+# takes input of type datetime.timedelta object
+# creates a new datetime.timedelta object based on the input; set the microseconds equal to 0
+def remove_milliseconds(td):
+  return timedelta(days=td.days, seconds=td.seconds, microseconds=0)
+
+######################################################
+######################################################
+
+def time_between_slimes(season_data, slime_lists, slime_records):
+  for item in season_data:
+    member_name = item['name']
+    slime_list = slime_lists[member_name]
+    slime_list_len = len(slime_list)
+
+    if slime_list_len > 1:
+      current_time_diff = timedelta(days=-999999, seconds=-999999, microseconds=-999999)  # Initialize as a timedelta object
+      for i in range(slime_list_len - 1):
+        slime_id1 = int(slime_list[i])
+        slime_id2 = int(slime_list[i + 1])
+
+        timestamp_str1 = slime_records[slime_id1]['time']
+        timestamp_str2 = slime_records[slime_id2]['time']
+
+        time_diff = calculate_time_diff(timestamp_str1, timestamp_str2)
+        if time_diff > current_time_diff:
+          current_time_diff = time_diff
+
+      current_time_diff = remove_milliseconds(current_time_diff)
+      item['time_between_slimes'] = str(current_time_diff)
+
+    else:
+      item['time_between_slimes'] = None
+
+  #print(season_data)
+
+######################################################
+######################################################
+
+def find_name_with_most_slimes(dict):
+  current_max_slimes = 0
+  name_with_most_slimes = ''
+  current_greatest_season = ''
+
+  for name, slimes_dict in dict.items():
+    greatest_season = max(slimes_dict, key=slimes_dict.get)
+    local_max_slimes = slimes_dict[greatest_season]
+
+    if local_max_slimes > current_max_slimes:
+      current_max_slimes = local_max_slimes
+      name_with_most_slimes = name
+      current_greatest_season = greatest_season
+  
+  return name_with_most_slimes, current_max_slimes, current_greatest_season

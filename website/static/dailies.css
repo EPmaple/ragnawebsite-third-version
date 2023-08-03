@@ -1,3 +1,19 @@
-.dailies_chart_container {
-  background-color: rgba(0, 0, 0, 0.5);
+.chart_container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid white;
+  padding: 2px;
+}
+
+.slider_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daili_chart_container {
+  height: 200px;
+}
+
+.hourly_chart_container {
+  height: 300px;
 }

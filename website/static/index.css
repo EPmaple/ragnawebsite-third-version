@@ -7,7 +7,7 @@
 
 .facts_grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-left: 0.1rem;
   justify-items: center;
   align-items: center; 
@@ -22,4 +22,14 @@
 
 .chart_container {
   border: 0.1rem solid white;
+}
+
+@media (width < 426px) {
+  .facts_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 0.1rem;
+    justify-items: center;
+    align-items: center; 
+  }
 }
