@@ -19,7 +19,7 @@ env = Environment(loader=FileSystemLoader("templates/"))
 season_numbers = ['18', '19', '20', '21', '22', '23', '24', 
                   '25', '25.5', '26', '27', '28', '29', '30',
                   '31', '32', '33', '34', '34.5', '35', '36',
-                  '37', '38']  
+                  '37', '38', '39']  
 
 subfolder_name = f'ragna_season'
 seasonal_tops = {}
